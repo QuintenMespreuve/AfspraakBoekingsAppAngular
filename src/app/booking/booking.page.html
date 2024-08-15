@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Afspraak Boeken</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Formulier voor het boeken van een afspraak -->
+  <form (ngSubmit)="bookAppointment()" #bookingForm="ngForm" class="booking-form">
+    
+    <!-- Invoerveld voor Naam -->
+    <ion-item lines="none">
+      <ion-input type="text" required placeholder="Naam" [(ngModel)]="appointment.name" name="name"></ion-input>
+    </ion-item>
+
+    <!-- Invoerveld voor E-mailadres -->
+    <ion-item lines="none">
+      <ion-input type="email" required placeholder="Email" [(ngModel)]="appointment.email" name="email"></ion-input>
+    </ion-item>
+
+    <!-- Invoerveld voor Datum -->
+    <ion-item lines="none">
+      <ion-datetime 
+        displayFormat="DD-MM-YYYY" 
+        placeholder="Datum" 
+        [(ngModel)]="appointment.date" 
+        name="date"
+        [min]="today"
+        [value]="today">
+      </ion-datetime>
+    </ion-item>
+
+    <!-- Invoerveld voor Opmerkingen -->
+    <ion-item lines="none">
+      <ion-textarea placeholder="Opmerkingen" [(ngModel)]="appointment.notes" name="notes"></ion-textarea>
+    </ion-item>
+
+    <!-- Knop voor het indienen van het formulier -->
+    <ion-button expand="block" type="submit" [disabled]="!bookingForm.form.valid" class="submit-button">Boek Afspraak</ion-button>
+  </form>
+
+  <!-- Lijst van niet beschikbare datums -->
+  <ion-list *ngIf="(unavailableDates$ | async) as dates; else noUnavailableDates" class="unavailable-dates-list">
+    <ion-item *ngFor="let date of dates" lines="none">
+      <ion-label class="unavailable-date-label">
+        <h2>Data niet meer beschikbaar: {{ date }}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Bericht als er geen niet beschikbare datums zijn -->
+  <ng-template #noUnavailableDates>
+    <ion-item lines="none">
+      <ion-label>Alle datums zijn beschikbaar</ion-label>
+    </ion-item>
+  </ng-template>
+</ion-content>

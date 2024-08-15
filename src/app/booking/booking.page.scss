@@ -1,0 +1,48 @@
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  ion-item {
+    --background: #2b2b2b;
+    --border-radius: 8px;
+    margin-bottom: 20px; 
+    padding-top: 12px;
+  }
+  
+  ion-input, ion-datetime, ion-textarea {
+    --background: #3a3a3a;
+    --color: #ffffff;
+    --padding-start: 12px;
+    --padding-end: 12px;
+    --padding-top: 12px;
+    --padding-bottom: 12px;
+    --border-radius: 8px;
+    --box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    --placeholder-color: #aaaaaa; /* Placeholder text color */
+  }
+  
+  ion-button.submit-button {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  .unavailable-dates-list {
+    margin-top: 20px;
+  }
+  
+  .unavailable-date-label h2 {
+    color: #ff6b6b;
+    font-weight: 500;
+  }
+  
+  ion-content {
+    --background: #1e1e1e;
+  }
+  
